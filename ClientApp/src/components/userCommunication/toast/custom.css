@@ -1,0 +1,12 @@
+.toastManager{
+    position: fixed;
+    top: 4em;
+    right: 4em;
+    width: 20em;
+    height: 20em;
+    background-color: transparent;
+    z-index: 1000;
+}
+.toast{
+    width: 100%;
+}
