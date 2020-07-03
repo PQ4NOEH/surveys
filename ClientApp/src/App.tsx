@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home, Administration, SurveyEdition, SurveyQuestionEdition, Collaborator } from './components/pages';
+import { Home, Administration, SurveyEdition, SurveyQuestionEdition, Collaborator,SurveyStats } from './components/pages';
 
 import './custom.css'
 
@@ -17,6 +17,7 @@ export default class App extends Component {
         <Route exact path='/surveyEdition/' component={SurveyEdition} />
         <Route exact path='/surveyEdition/:surveyId' component={SurveyEdition} />
         <Route exact path='/SurveyQuestionEdition/:surveyId/:sectionId/:questionId' component={SurveyQuestionEdition} />
+        <Route exact path='/SurveyStats/:surveyId' component={SurveyStats} />
       </Layout>
     );
   }

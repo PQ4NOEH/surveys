@@ -11,10 +11,25 @@ export interface IAppState{
     collaborators: Array<ICollaborator>,
     collaboratorSummary: ICollaboratorSummary,
     surveysSummary: Array<ISurveySummary>,
-    systemNotifications: Array<SystemNotification>
-    survey: ISurvey
+    systemNotifications: Array<SystemNotification>,
+    survey: ISurvey,
+    surveyStats: ISurveyStats
 }
-
+export interface ISurveyStats{
+    id: number,
+    name: string,
+    fulfilledSurveys:Array<IFulfilledSurvey>
+}
+export interface IFulfilledSurvey{
+    id:number,
+    doneOn: Date,
+    employeeNie: string,
+    questions:Array<IQuestionAnswer>
+}
+export interface IQuestionAnswer{
+    questionId:number,
+    values:Array<number>
+}
 export {SystemNotification, SystemNotificationType}
 export interface ICollaborator{
     nie: string,

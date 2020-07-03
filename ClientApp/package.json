@@ -28,6 +28,8 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
+    "@nivo/line": "^0.62.0",
+    "@nivo/pie": "^0.62.0",
     "ajv": "^6.9.1",
     "cross-env": "^5.2.0",
     "eslint-plugin-flowtype": "^5.1.3",

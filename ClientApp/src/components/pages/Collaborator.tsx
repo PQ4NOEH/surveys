@@ -14,6 +14,7 @@ export default function Collaborator(props: any) {
     }, [])
 
     const handleEditSurvey = (s: ISurveySummary) => history.push(`/surveyEdition/${s.id}`)
+    const handleStatsSurvey = (s: ISurveySummary) => history.push(`/surveyStats/${s.id}`)
     const handleDeleteSurvey = (s: ISurveySummary) => { }
     const handleCreateNewSurvey = ()=> history.push("/surveyEdition/-1");
     return (
@@ -45,6 +46,7 @@ export default function Collaborator(props: any) {
                                 surveys={collaborator.surveys}
                                 handleEdit={handleEditSurvey}
                                 handleDelete={handleDeleteSurvey}
+                                handleStats={handleStatsSurvey}
                                 allowManagement={true}
                             />
                         </div>

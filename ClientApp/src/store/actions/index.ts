@@ -1,5 +1,10 @@
-import {PostSystemNotification, SystemNotificationPosted, SystemNotificationExpired} from './systemNotificationActions'
+import {createPostSystemNotification, createSystemNotificationPosted, createSystemNotificationExpired} from './systemNotificationActions'
+import {createFetchSurveyStats, createSurveyStatSLoaded, SurveyStatsActionTypes} from './surveyStatsActions'
+const SystemNotificationActionCreator = {createPostSystemNotification, createSystemNotificationPosted, createSystemNotificationExpired};
+const SurveyStatsActionCreator = {createFetchSurveyStats, createSurveyStatSLoaded};
 
-export {
-    PostSystemNotification, SystemNotificationPosted, SystemNotificationExpired
+export { 
+    SystemNotificationActionCreator,
+    SurveyStatsActionCreator,
+    SurveyStatsActionTypes
 }

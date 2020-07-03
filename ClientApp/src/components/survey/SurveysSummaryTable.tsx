@@ -6,18 +6,21 @@ interface SurveysSummaryTableProps{
     surveys: Array<ISurveySummary>,
     handleEdit?: (c: ISurveySummary) => void,
     handleDelete?: (c: ISurveySummary) => void,
+    handleStats?:(c: ISurveySummary) => void,
     allowManagement?: boolean
 }
 export default function SurveysSummaryTable({
     surveys, 
     handleEdit, 
     handleDelete, 
+    handleStats,
     allowManagement= false
 }: SurveysSummaryTableProps) {
 
     const noOp = ()=>{};
     const onClickDelete = (c: ISurveySummary) => ()=> (handleDelete|| noOp)(c);
     const onClickEdit = (c: ISurveySummary) => ()=> (handleEdit|| noOp)(c);
+    const onClickStats = (c: ISurveySummary) => ()=> (handleStats|| noOp)(c);
     return (
         <table className='table table-striped' aria-labelledby="tabelLabel">
             <thead>
@@ -35,7 +38,7 @@ export default function SurveysSummaryTable({
                             <td className={allowManagement? "d-table-cell":"d-none"}>
                                 <RemoveButton handleDelete={onClickDelete(s)} />
                                 <EditButton handleClick={onClickEdit(s)} />
-                                <StatsButton handleClick={()=>{}} />
+                                <StatsButton handleClick={onClickStats(s)} />
                             </td>
                         </tr>
                     )
