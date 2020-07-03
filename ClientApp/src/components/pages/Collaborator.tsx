@@ -4,13 +4,15 @@ import {useHistory} from 'react-router-dom';
 import { IAppState, ISurveySummary } from '../../Types/appTypes';
 import { SurveysSummaryTable } from '../survey'
 import { CollaboratorSummary } from '../collaborators'
+import {useTranslation } from 'react-i18next';
 
-export default function Collaborator(props: any) {
+export default function Collaborator({match:{params:{nie}}}: any) {    
+    const { t } = useTranslation();
     const history = useHistory();
     const collaborator = useSelector((store: IAppState) => store.collaboratorSummary);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch({ type: "COLLABORATOR_SUMMARY_FETCH_REQUESTED", payload: { nie: parseInt(props.match.params.nie) } })
+        dispatch({ type: "COLLABORATOR_SUMMARY_FETCH_REQUESTED", payload: { nie: parseInt(nie) } })
     }, [])
 
     const handleEditSurvey = (s: ISurveySummary) => history.push(`/surveyEdition/${s.id}`)
@@ -21,7 +23,7 @@ export default function Collaborator(props: any) {
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <h1>Colaborador</h1>
+                    <h1>{t("Collaborator")}</h1>
                     <CollaboratorSummary
                         collaborator={collaborator}
                     />
@@ -32,7 +34,7 @@ export default function Collaborator(props: any) {
                     <input 
                         type="button" 
                         className="btn btn-primary float-right " 
-                        value="Nueva encuesta" 
+                        value={t("NewSurvey").toString()} 
                         onClick={handleCreateNewSurvey} 
                     />
                 </div>
@@ -40,7 +42,7 @@ export default function Collaborator(props: any) {
             <div className="row">
                 <div className="col-12">
                     <div className="card" style={{ clear: "both" }}>
-                        <h5 className="card-header">Encuestas</h5>
+                        <h5 className="card-header">{t("Surveys")}</h5>
                         <div className="card-body">
                             <SurveysSummaryTable
                                 surveys={collaborator.surveys}

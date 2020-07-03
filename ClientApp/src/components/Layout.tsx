@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavMenu } from './navMenu';
-import {ToastManager} from './userCommunication'
 
 
 export function Layout(props: any){
@@ -8,7 +7,6 @@ export function Layout(props: any){
     <div>
       <NavMenu />
       <div className="container">
-        <ToastManager />
         {props.children}
       </div>
     </div>

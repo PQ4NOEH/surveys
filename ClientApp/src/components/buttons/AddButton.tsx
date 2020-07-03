@@ -1,5 +1,6 @@
 import React from 'react';
-import RawIconButton from './RawIconButton'
+import RawIconButton from './RawIconButton';
+import {useTranslation } from 'react-i18next';
 
 interface AddButtonProps{
     handleClick: ()=> void;
@@ -7,7 +8,8 @@ interface AddButtonProps{
 }
 export default function AddButton({
     handleClick,
-    tittle = "Agregar"
+    tittle
 }: AddButtonProps){
-    return <RawIconButton icon="fa fa-plus" buttonTitle={tittle} handleClick={handleClick}/>
+    const { t } = useTranslation();
+    return <RawIconButton icon="fa fa-plus" buttonTitle={tittle|| t("Add")} handleClick={handleClick}/>
 }

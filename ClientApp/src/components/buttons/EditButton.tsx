@@ -1,14 +1,17 @@
 import React from 'react';
-import RawIconButton from './RawIconButton'
+import RawIconButton from './RawIconButton';
+import {useTranslation } from 'react-i18next';
 
 interface EditButtonProps{
     handleClick: ()=> void;
-    tittle?:string
+    tittle?:string;
+    t?: (t:string)=> string;
 }
 export default function EditButton({
     handleClick,
-    tittle = "Editar"
+    tittle 
 }: EditButtonProps){
-    return <RawIconButton icon="fa fa-edit" buttonTitle={tittle} handleClick={handleClick}/>
+    const { t } = useTranslation();
+    return <RawIconButton icon="fa fa-edit" buttonTitle={tittle||t("Edit")} handleClick={handleClick}/>
     
 }

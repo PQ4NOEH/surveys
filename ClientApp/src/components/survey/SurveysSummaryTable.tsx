@@ -1,6 +1,7 @@
 import React from 'react';
 import {ISurveySummary} from '../../Types/appTypes';
 import {RemoveButton, EditButton, StatsButton} from '../buttons';
+import {useTranslation } from 'react-i18next';
 
 interface SurveysSummaryTableProps{
     surveys: Array<ISurveySummary>,
@@ -17,6 +18,7 @@ export default function SurveysSummaryTable({
     allowManagement= false
 }: SurveysSummaryTableProps) {
 
+    const { t } = useTranslation();
     const noOp = ()=>{};
     const onClickDelete = (c: ISurveySummary) => ()=> (handleDelete|| noOp)(c);
     const onClickEdit = (c: ISurveySummary) => ()=> (handleEdit|| noOp)(c);
@@ -25,7 +27,7 @@ export default function SurveysSummaryTable({
         <table className='table table-striped' aria-labelledby="tabelLabel">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>{t("Name")}</th>
                     
                     <th className={allowManagement? "d-table-cell":"d-none"}></th>
                 </tr>

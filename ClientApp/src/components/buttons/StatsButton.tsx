@@ -1,13 +1,15 @@
 import React from 'react';
-import RawIconButton from './RawIconButton'
+import RawIconButton from './RawIconButton';
+import {useTranslation } from 'react-i18next';
 
 interface StatsButtonProps{
     handleClick: ()=> void;
-    tittle?: string
+    tittle?: string;
 }
 export default function StatsButton({
     handleClick,
-    tittle = "View stats"
+    tittle
 }: StatsButtonProps){
-    return <RawIconButton icon="fa fa-chart-bar" buttonTitle={tittle} handleClick={handleClick}/>
+    const { t } = useTranslation();
+    return <RawIconButton icon="fa fa-chart-bar" buttonTitle={tittle||t("Stats")} handleClick={handleClick}/>
 }

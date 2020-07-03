@@ -82,7 +82,6 @@ export interface IChooseOneQuestion{
 }
 export type ISurveyQuestion = ITextQuestion|IMultipleChoiceQuestion|IChooseOneQuestion
 export interface IQuestionOption{
-    
     caption: string,
     value: number,
     position: number

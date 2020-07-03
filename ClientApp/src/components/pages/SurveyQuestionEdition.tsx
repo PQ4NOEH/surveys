@@ -2,7 +2,8 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {RemoveButton, AddButton} from '../buttons';
-import {QuestionTypeSelect} from '../survey'
+import {QuestionTypeSelect} from '../survey';
+import {useTranslation } from 'react-i18next';
 import {IAppState, 
     ISurvey, 
     ISurveySection, 
@@ -44,6 +45,7 @@ export default function SurveyQuestionEdition({
         }
     }
 }:ISurveyQuestionEditionrouteMatch) {
+    const { t } = useTranslation();
     const survey = useSelector((state:IAppState)=> state.survey);
     const history = useHistory();
     function goSurvey(){
@@ -64,13 +66,13 @@ export default function SurveyQuestionEdition({
                 <h1>{`${survey.name}/${section?.name}`}</h1>  
                 <form onSubmit={save} >
                     <div className="form-group">
-                        <label htmlFor="caption">Pregunta</label>
+                        <label htmlFor="caption">{t("Question")}</label>
                         <input type="text" className="form-control" id="caption" aria-describedby="questionHelp" />
-                        <small id="questionHelp" className="form-text text-muted">El texto de la pregunta que quiere formular.</small>
+                        <small id="questionHelp" className="form-text text-muted">{t("TextQuestionYouWantToDo")}</small>
                     </div>
                     <QuestionTypeSelect handleChange={(p)=> {}}/>
                     <div className={question.type === QuestionType.Text? 'd-none':'border p-3'}>
-                        <label htmlFor="questionType">Opciones</label>
+                        <label htmlFor="questionType">{t("Options")}</label>
                         <div className="row">
                             <div className="col-11">  <input type="text" className="form-control" id="newOption" /></div>
                             <div className="col-1"><AddButton handleClick={()=>{}}/></div>
@@ -87,10 +89,10 @@ export default function SurveyQuestionEdition({
                     </div>
                     <div className="row mt-3 justify-content-between">
                         <div className="col-1">
-                            <button type="submit" className="btn btn-secondary" onClick={goSurvey}>Volver</button>
+                            <button type="submit" className="btn btn-secondary" onClick={goSurvey}>{t("Back")}</button>
                         </div>
                         <div className="col-1">
-                            <button type="submit" className="btn btn-primary" onClick={save}>Guardar</button>
+                            <button type="submit" className="btn btn-primary" onClick={save}>{t("Save")}</button>
                         </div>
                     </div>
                 </form>

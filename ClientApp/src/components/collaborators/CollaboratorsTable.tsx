@@ -1,6 +1,7 @@
 import React from 'react';
 import { ICollaborator } from '../../Types/appTypes';
 import {RemoveButton, EditButton} from '../buttons';
+import {useTranslation } from 'react-i18next';
 
 interface ICollaboratorsTableProps {
     collaborators: Array<ICollaborator>,
@@ -12,16 +13,16 @@ export default function CollaboratorsTable({
     handleEdit,
     handleDelete
 }: ICollaboratorsTableProps) {
+    const { t } = useTranslation();
     const onClickDelete = (c: ICollaborator) => ()=> handleDelete(c);
     const onClickEdit = (c: ICollaborator) => ()=> handleEdit(c);
-
     return (
         <table className='table table-striped' aria-labelledby="tabelLabel">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Department</th>
+                    <th>{t("Name")}</th>
+                    <th>{t("Email")}</th>
+                    <th>{t("Department")}</th>
                     <th></th>
                 </tr>
             </thead>
