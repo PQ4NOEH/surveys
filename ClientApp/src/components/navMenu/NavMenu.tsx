@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import {Navbar, Nav} from 'react-bootstrap';
 import ToastTest from '../userCommunication/ToastTest'
 import { Link } from 'react-router-dom';
 import './custom.css';
@@ -17,11 +17,19 @@ export default function NavMenu(){
   }
   return (
     <header>
-      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
+      <Navbar bg="light" variant="light">
+        <Navbar.Brand href="/">{t("Surveys")}</Navbar.Brand>
+        <ToastTest />
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to="/">{t("Home")}</Nav.Link>
+          <Nav.Link as={Link} to="/administration">{t("Administration")}</Nav.Link>
+        </Nav>
+      </Navbar>
+      {/* <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
         <Container>
           <NavbarBrand tag={Link} to="/">{t("Survey")}</NavbarBrand>
           <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-          <ToastTest />
+          
           
           
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!state.collapsed} navbar>
@@ -36,7 +44,7 @@ export default function NavMenu(){
             </ul>
           </Collapse>
         </Container>
-      </Navbar>
+      </Navbar> */}
     </header>
   );
 }
